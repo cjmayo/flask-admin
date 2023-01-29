@@ -65,6 +65,10 @@ jobs:
         run: pip install tox
       - name: Run tests
         run: tox -e ${{ matrix.toxenv }}
+      - name: Upload coverage to Coveralls
+        uses: coverallsapp/github-action@3284643be2c47fb6432518ecec17f1255e8a06a6
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
   checks:
     name: ${{ matrix.toxenv }}
     runs-on: ubuntu-latest
